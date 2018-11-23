@@ -5,23 +5,30 @@ export default class People extends React.Component {
     super(props);
 
     this.state = {
-      people: []
+      people: [],
+      peopleApiRoute: 'https://swapi.cosadf/api/people/',
     };
   }
 
   componentDidMount() {
-    const component = this
-    fetch('https://swapi.co/api/people/')  
-      .then(function(response) {
+    const { peopleApiRoute } = this.state;
+    this.fetchPeople(peopleApiRoute);
+  }
+
+  fetchPeople(ApiRoute) {
+    fetch(ApiRoute)
+      .then((response) => {
         if (response.ok) {
-          return response.json()
-        } else {
-          return Promise.reject('Unable to fetch people')
+          return response.json();
         }
-      }).then((body) => {
-        const people = body.results
-        component.setState({ people })
+        return Promise.reject(new Error('Unable to fetch people'));
       })
+      .then((body) => {
+        this.setState({
+          people: body.results,
+        });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
