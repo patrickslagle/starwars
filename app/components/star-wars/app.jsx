@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Person from './person.jsx';
+import FooterNav from './footer-nav.jsx';
+
 export default class People extends Component {
   constructor(props) {
     super(props);
@@ -7,6 +9,8 @@ export default class People extends Component {
     this.state = {
       people: [],
       peopleApiRoute: 'https://swapi.co/api/people/',
+      nextPeopleApiRoute: null,
+      prevPeopleApiRoute: null,
     };
     this.fetchPeople = this.fetchPeople.bind(this);
   }
@@ -27,13 +31,15 @@ export default class People extends Component {
       .then((body) => {
         this.setState({
           people: body.results,
+          nextPeopleApiRoute: body.next,
+          prevPeopleApiRoute: body.previous,
         });
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    const { people } = this.state;
+    const { people, nextPeopleApiRoute, prevPeopleApiRoute } = this.state;
     // create array of Person Components from people data
     const personArray = people.map(person => (
       <Person
@@ -50,6 +56,11 @@ export default class People extends Component {
         <div id="people-container">
           {personArray}
         </div>
+        <FooterNav
+          next={nextPeopleApiRoute}
+          prev={prevPeopleApiRoute}
+          fetchPeople={this.fetchPeople}
+        />
       </div>
     );
   }
