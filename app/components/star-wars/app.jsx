@@ -1,13 +1,14 @@
-import React from 'react';
-
-export default class People extends React.Component {
+import React, { Component } from 'react';
+import Person from './person.jsx';
+export default class People extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       people: [],
-      peopleApiRoute: 'https://swapi.cosadf/api/people/',
+      peopleApiRoute: 'https://swapi.co/api/people/',
     };
+    this.fetchPeople = this.fetchPeople.bind(this);
   }
 
   componentDidMount() {
@@ -32,16 +33,24 @@ export default class People extends React.Component {
   }
 
   render() {
-    const people = this.state.people
+    const { people } = this.state;
+    // create array of Person Components from people data
+    const personArray = people.map(person => (
+      <Person
+        key={person.url}
+        name={person.name}
+        height={person.height}
+        mass={person.mass}
+        gender={person.gender}
+      />
+    ));
     return (
       <div style={{textAlign: 'center'}}>
         <h1>Star Wars People</h1>
-        <ul>
-          {people.map(person =>
-            <li key={person.url}>{person.name}</li>
-          )}
-        </ul>
+        <div id="people-container">
+          {personArray}
+        </div>
       </div>
-    )
+    );
   }
 }
