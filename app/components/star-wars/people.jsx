@@ -11,7 +11,7 @@ export default class People extends React.Component {
 
   componentDidMount() {
     const component = this
-    fetch('http://swapi.co/api/people/')  
+    fetch('https://swapi.co/api/people/')  
       .then(function(response) {
         if (response.ok) {
           return response.json()
