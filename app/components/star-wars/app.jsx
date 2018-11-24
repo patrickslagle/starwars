@@ -11,6 +11,7 @@ export default class People extends Component {
       peopleApiRoute: 'https://swapi.co/api/people/',
       nextPeopleApiRoute: null,
       prevPeopleApiRoute: null,
+      loadingPeople: false,
     };
     this.fetchPeople = this.fetchPeople.bind(this);
   }
@@ -20,7 +21,13 @@ export default class People extends Component {
     this.fetchPeople(peopleApiRoute);
   }
 
-  fetchPeople(ApiRoute) {
+  /**
+   * fetches a set of star wars characters based on the API route given, along with
+   * the API route for the next and previous set of characters
+   */
+  async fetchPeople(ApiRoute) {
+    // set loadingPeople to true to temporarily disable any buttons that could call fetchPeople
+    await this.setState({ loadingPeople: true });
     fetch(ApiRoute)
       .then((response) => {
         if (response.ok) {
@@ -33,13 +40,14 @@ export default class People extends Component {
           people: body.results,
           nextPeopleApiRoute: body.next,
           prevPeopleApiRoute: body.previous,
+          loadingPeople: false,
         });
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    const { people, nextPeopleApiRoute, prevPeopleApiRoute } = this.state;
+    const { people, nextPeopleApiRoute, prevPeopleApiRoute, loadingPeople } = this.state;
     // create array of Person Components from people data
     const personArray = people.map(person => (
       <Person
@@ -60,6 +68,7 @@ export default class People extends Component {
           next={nextPeopleApiRoute}
           prev={prevPeopleApiRoute}
           fetchPeople={this.fetchPeople}
+          loadingPeople={loadingPeople}
         />
       </div>
     );
