@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Person from './person.jsx';
 import FooterNav from './footer-nav.jsx';
+import SearchPeople from './search-people.jsx';
 
 export default class People extends Component {
   constructor(props) {
@@ -61,6 +62,9 @@ export default class People extends Component {
     return (
       <div style={{textAlign: 'center'}}>
         <h1>Star Wars People</h1>
+        <SearchPeople
+          fetchPeople={this.fetchPeople}
+        />
         <div id="people-container">
           {personArray}
         </div>
