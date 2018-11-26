@@ -44,3 +44,11 @@ exports[`FooterNav component renders properly 1`] = `
   </button>
 </footer>
 `;
+
+exports[`SearchPeople component renders properly 1`] = `
+<input
+  id="search-bar"
+  onChange={[Function]}
+  placeholder="Search Star Wars Characters..."
+/>
+`;
