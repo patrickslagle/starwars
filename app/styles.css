@@ -1,5 +1,26 @@
 * {
   padding: 0;
   margin: 0;
+  color: white;
   font-family: "Roboto", sans-serif
+}
+
+#root {
+  height: 100%;
+  background: rgb(9,6,33);
+}
+
+#wallpaper {
+  background-image: url("../assets/wallpaper.jpg");
+  background-repeat: no-repeat; 
+  background-size: 100%; 
+  width: 100%;
+  height: 100%; 
+}
+
+#app {
+  width: 50%;
+  height: 100vh;
+  overflow: auto; 
+  text-align: center;
 }

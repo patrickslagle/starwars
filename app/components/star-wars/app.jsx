@@ -60,20 +60,22 @@ export default class People extends Component {
       />
     ));
     return (
-      <div style={{textAlign: 'center'}}>
-        <h1>Star Wars People</h1>
-        <SearchPeople
-          fetchPeople={this.fetchPeople}
-        />
-        <div id="people-container">
-          {personArray}
+      <div id="wallpaper">
+        <div id="app">
+          <h1 id="header">Star Wars People</h1>
+          <SearchPeople
+            fetchPeople={this.fetchPeople}
+          />
+          <div id="people-container">
+            {personArray}
+          </div>
+          <FooterNav
+            next={nextPeopleApiRoute}
+            prev={prevPeopleApiRoute}
+            fetchPeople={this.fetchPeople}
+            loadingPeople={loadingPeople}
+          />
         </div>
-        <FooterNav
-          next={nextPeopleApiRoute}
-          prev={prevPeopleApiRoute}
-          fetchPeople={this.fetchPeople}
-          loadingPeople={loadingPeople}
-        />
       </div>
     );
   }
