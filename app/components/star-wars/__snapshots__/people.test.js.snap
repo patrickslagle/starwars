@@ -25,3 +25,22 @@ exports[`App component renders properly 1`] = `
   />
 </div>
 `;
+
+exports[`FooterNav component renders properly 1`] = `
+<footer>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Prev
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Next
+  </button>
+</footer>
+`;
