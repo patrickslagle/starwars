@@ -45,6 +45,30 @@ exports[`FooterNav component renders properly 1`] = `
 </footer>
 `;
 
+exports[`Person component renders properly 1`] = `
+<div
+  className="person"
+>
+  <h3>
+    Luke Skywalker
+  </h3>
+  <ul>
+    <li>
+      Height: 
+      172
+    </li>
+    <li>
+      Gender: 
+      male
+    </li>
+    <li>
+      Mass: 
+      82
+    </li>
+  </ul>
+</div>
+`;
+
 exports[`SearchPeople component renders properly 1`] = `
 <input
   id="search-bar"

@@ -4,6 +4,7 @@ import { shallow, configure } from 'enzyme';
 import App from '../app.jsx';
 import FooterNav from '../footer-nav.jsx';
 import SearchPeople from '../search-people.jsx';
+import Person from '../person.jsx';
 
 configure({ adapter: new Adapter() });
 
@@ -20,6 +21,18 @@ test('FooterNav component renders properly', () => {
       loadingPeople={false}
       next="https://swapi.co/api/people/?page=3"
       prev="https://swapi.co/api/people/?page=1"
+    />,
+  );
+  expect(wrapper).toMatchSnapshot();
+});
+
+test('Person component renders properly', () => {
+  const wrapper = shallow(
+    <Person
+      name="Luke Skywalker"
+      mass="82"
+      gender="male"
+      height="172"
     />,
   );
   expect(wrapper).toMatchSnapshot();
