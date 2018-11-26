@@ -44,7 +44,7 @@ export default class People extends Component {
           loadingPeople: false,
         });
       })
-      .catch(err => console.log(err));
+      .catch(() => console.error('Unable to fetch people'));
   }
 
   render() {
