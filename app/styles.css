@@ -41,3 +41,19 @@
 #search-bar::placeholder {
   color: rgb(9,6,33)
 }
+
+#people-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px; 
+}
+
+.person {
+  width: 200px;
+  padding: 10px;
+}
+
+.person ul{
+  list-style-type: none; 
+}
