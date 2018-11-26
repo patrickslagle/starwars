@@ -37,7 +37,7 @@ export default class People extends Component {
         return Promise.reject(new Error('Unable to fetch people'));
       })
       .then((body) => {
-        // update state with Star Wars characters found, and API routes for the next and prev characters
+        // update with Star Wars characters fetched, and API routes for the next/prev characters
         this.setState({
           people: body.results,
           nextPeopleApiRoute: body.next,

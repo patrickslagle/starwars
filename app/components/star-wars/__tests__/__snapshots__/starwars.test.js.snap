@@ -2,27 +2,29 @@
 
 exports[`App component renders properly 1`] = `
 <div
-  style={
-    Object {
-      "textAlign": "center",
-    }
-  }
+  id="wallpaper"
 >
-  <h1>
-    Star Wars People
-  </h1>
-  <SearchPeople
-    fetchPeople={[Function]}
-  />
   <div
-    id="people-container"
-  />
-  <FooterNav
-    fetchPeople={[Function]}
-    loadingPeople={true}
-    next={null}
-    prev={null}
-  />
+    id="app"
+  >
+    <h1
+      id="header"
+    >
+      Star Wars People
+    </h1>
+    <SearchPeople
+      fetchPeople={[Function]}
+    />
+    <div
+      id="people-container"
+    />
+    <FooterNav
+      fetchPeople={[Function]}
+      loadingPeople={true}
+      next={null}
+      prev={null}
+    />
+  </div>
 </div>
 `;
 
