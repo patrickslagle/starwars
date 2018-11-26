@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Star Wars People 1`] = `
+exports[`App component renders properly 1`] = `
 <div
   style={
     Object {
@@ -11,6 +11,17 @@ exports[`Star Wars People 1`] = `
   <h1>
     Star Wars People
   </h1>
-  <ul />
+  <SearchPeople
+    fetchPeople={[Function]}
+  />
+  <div
+    id="people-container"
+  />
+  <FooterNav
+    fetchPeople={[Function]}
+    loadingPeople={true}
+    next={null}
+    prev={null}
+  />
 </div>
 `;

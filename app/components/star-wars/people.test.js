@@ -1,11 +1,12 @@
 import React from 'react'
-import StarWarsPeople from './people'
-import renderer from 'react-test-renderer'
+import App from './app.jsx'
+// import renderer from 'react-test-renderer'
+import { shallow, configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-15';
 
-test('Star Wars People', () => {
-  const component = renderer.create(
-    <StarWarsPeople />
-  )
-  let tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+configure({ adapter: new Adapter() });
+
+test('App component renders properly', () => {
+  const wrapper = shallow(<App />);
+  expect(wrapper).toMatchSnapshot();
+});
