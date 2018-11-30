@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import Person from './person.jsx';
 import FooterNav from './footer-nav.jsx';
 import SearchPeople from './search-people.jsx';
+import Person from './person.jsx';
 
-export default class People extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       people: [],
       peopleApiRoute: 'https://swapi.co/api/people/',
+      currentAPIRoute: 'https://swapi.co/api/people/',
       nextPeopleApiRoute: null,
       prevPeopleApiRoute: null,
       loadingPeople: false,
@@ -17,6 +18,7 @@ export default class People extends Component {
     this.fetchPeople = this.fetchPeople.bind(this);
   }
 
+  // Load Star Wars people once component has mounted
   componentDidMount() {
     const { peopleApiRoute } = this.state;
     this.fetchPeople(peopleApiRoute);
@@ -28,7 +30,10 @@ export default class People extends Component {
    */
   async fetchPeople(ApiRoute) {
     // set loadingPeople to true to temporarily disable any buttons that could call fetchPeople
-    await this.setState({ loadingPeople: true });
+    await this.setState({
+      loadingPeople: true,
+      currentAPIRoute: ApiRoute,
+    });
     fetch(ApiRoute)
       .then((response) => {
         if (response.ok) {
@@ -37,21 +42,27 @@ export default class People extends Component {
         return Promise.reject(new Error('Unable to fetch people'));
       })
       .then((body) => {
-        // update with Star Wars characters fetched, and API routes for the next/prev characters
-        this.setState({
-          people: body.results,
-          nextPeopleApiRoute: body.next,
-          prevPeopleApiRoute: body.previous,
-          loadingPeople: false,
-        });
+        const { currentAPIRoute } = this.state;
+        if (ApiRoute === currentAPIRoute) {
+          this.setState({
+            people: body.results,
+            nextPeopleApiRoute: body.next,
+            prevPeopleApiRoute: body.previous,
+            loadingPeople: false,
+          });
+        }
       })
       .catch(() => console.error('Unable to fetch people'));
   }
 
-  render() {
-    const { people, nextPeopleApiRoute, prevPeopleApiRoute, loadingPeople } = this.state;
-    // create array of Person Components from people data
-    const personArray = people.map(person => (
+  renderPeopleOrLoad() {
+    const { people, loadingPeople } = this.state;
+    // data is being loaded, show loading img
+    if (loadingPeople) {
+      return <img src="https://www.growingagreenerworld.com/wp-content/uploads/2015/03/loading.gif" alt="loading" />;
+    }
+    // data is not being loaded, create array of Person Components from people data
+    return people.map(person => (
       <Person
         key={person.url}
         name={person.name}
@@ -60,6 +71,10 @@ export default class People extends Component {
         gender={person.gender}
       />
     ));
+  }
+
+  render() {
+    const { nextPeopleApiRoute, prevPeopleApiRoute, loadingPeople } = this.state;
     return (
       <div id="wallpaper">
         <div id="app">
@@ -68,7 +83,7 @@ export default class People extends Component {
             fetchPeople={this.fetchPeople}
           />
           <div id="people-container">
-            {personArray}
+            {this.renderPeopleOrLoad()}
           </div>
           <FooterNav
             next={nextPeopleApiRoute}
