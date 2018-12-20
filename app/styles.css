@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   color: white;
-  font-family: "Roboto", sans-serif
+  font-family: "Roboto Condensed", sans-serif
 }
 
 #root {
@@ -27,19 +27,22 @@
 
 #header {
   padding: 30px;
+  font-weight: 400;
 }
 
 #search-bar {
-  width: 90%;
+  width: 60%;
   box-shadow: 1px 1px 8px white;
-  border: none;
-  padding: 5px;
-  color: rgb(9,6,33);
-  font-size: 20px; 
+  border: 1px solid white; 
+  background-color: rgb(9,6,33);
+  border-radius: 5px; 
+  padding: 7px;
+  color:rgb(200,200,200);
+  font-size: 18px; 
 }
 
 #search-bar::placeholder {
-  color: rgb(9,6,33)
+  color: rgb(200,200,200); 
 }
 
 #people-container{
@@ -52,6 +55,8 @@
 .person {
   width: 200px;
   padding: 10px;
+  display: flex;
+  flex-direction: column; 
 }
 
 .person ul{
@@ -59,12 +64,13 @@
 }
 
 button{
-  background-color: white;
-  width: 50px; 
-  color: rgb(9,6,33);
-  border: none; 
+  background-color: rgb(9,6,33);
+  width: 70px; 
+  color: white;
+  border: 1px solid white; 
   font-size: 16px; 
   font-weight: 600px;
   padding: 5px;
   margin: 10px; 
+  border-radius: 5px; 
 }
