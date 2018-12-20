@@ -1,7 +1,7 @@
 {
-  "name": "trineo-js-exercise",
+  "name": "starwars-characters",
   "version": "1.0.0",
-  "description": "Trineo JS Exercise",
+  "description": "Star Wars Characters",
   "main": "index.js",
   "license": "None",
   "scripts": {
