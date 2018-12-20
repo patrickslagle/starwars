@@ -78,7 +78,7 @@ export default class App extends Component {
     return (
       <div id="wallpaper">
         <div id="app">
-          <h1 id="header">Star Wars People</h1>
+          <h1 id="header">Star Wars Characters</h1>
           <SearchPeople
             fetchPeople={this.fetchPeople}
           />
