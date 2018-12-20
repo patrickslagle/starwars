@@ -10,7 +10,7 @@ const SearchPeople = ({ fetchPeople }) => {
   return (
     <input
       id="search-bar"
-      placeholder="Search Star Wars Characters..."
+      placeholder="Search Characters..."
       onChange={autocomplete}
     />
   );
